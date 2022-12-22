@@ -57,6 +57,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    options.tableName = 'Bookings';
     return queryInterface.bulkDelete(options, {}, {});
   }
 };
