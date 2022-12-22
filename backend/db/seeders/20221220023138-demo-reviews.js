@@ -30,10 +30,10 @@ module.exports = {
       stars: 5
     },
     {
-      spotId: 3,
+      spotId: 5,
       userId: 3,
       review: 'This place actually sucks',
-      stars: 5
+      stars: 2
     },
     {
       spotId: 4,
