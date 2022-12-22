@@ -83,6 +83,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
+    options.tableName = 'Spots';
     return queryInterface.bulkDelete(options, {}, {});
   }
 };
