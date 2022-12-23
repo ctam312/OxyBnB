@@ -7,7 +7,7 @@ const {
 } = require("../../utils/auth");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
-const { Spot, Review, SpotImage, User } = require("../../db/models");
+const { Spot, Review, SpotImage, ReviewImage, User } = require("../../db/models");
 
 const router = express.Router();
 
@@ -29,6 +29,12 @@ const validateSpotImage = [
     check('preview').notEmpty().isBoolean().withMessage("Must enter 'true' or 'false'"),
     handleValidationErrors,
 ];
+
+const validateReview = [
+	check("review").notEmpty().withMessage('Review text is required'),
+	check("stars").notEmpty().isInt({min:1,max:5}).withMessage('Stars must be an integer from 1 to 5'),
+	handleValidationErrors,
+]
 
 //get all spots
 router.get("/", async (req, res, next) => {
@@ -55,7 +61,7 @@ router.get("/", async (req, res, next) => {
 			}
 		});
 		if (!spot.preview) {
-			spot.preview = "no preview allowed";
+			spot.preview = "no preview avaliable";
 		}
 
 		//getting the average rating for spot
@@ -354,7 +360,85 @@ router.post('/:spotId/images', requireAuth, validateSpotImage, async(req, res, n
         preview: newImage.preview
     })
 
+});
+
+//get reviews by spot id
+router.get('/:spotId/reviews', async (req, res, next) => {
+	const { spotId } = req.params;
+	const spot = await Spot.findByPk(spotId)
+
+	if (!spot) {
+		res.status(404);
+		res.statusCode = 404;
+		return res.json({
+			message: "Spot couldn't be found",
+			StatusCode: res.statusCode,
+		});
+	};
+
+	const spotIdReviews = await spot.getReviews({
+		include: [
+			{
+				model: User,
+				attributes: ['id', 'firstName', 'lastName']
+			},
+			{
+				model: ReviewImage,
+				attributes: ['id', 'url']
+			}
+		]
+	});
+
+	res.json({
+		Reviews: spotIdReviews
+	})
+
+});
+
+router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res, next) => {
+	const { spotId } = req.params;
+	const user = req.user;
+	const { review, stars } = req.body;
+
+	const spot = await Spot.findByPk(spotId);
+
+	if (!spot) {
+		res.status(404);
+		res.statusCode = 404;
+		return res.json({
+			message: "Spot couldn't be found",
+			StatusCode: res.statusCode,
+		});
+	};
+
+	const userReview = await Review.findOne({
+		where: {
+			userId: user.id,
+			spotId: spotId
+		}
+	});
+
+	if (userReview) {
+		res.status(403);
+		res.statusCode = 403;
+		return res.json({
+			message: "User already has a review for this spot",
+			StatusCode: res.statusCode,
+		});
+	}
+
+	const spotReview = await spot.createReview({
+		userId: user.id,
+		review: review,
+		stars: stars
+	})
+
+	res.json(spotReview)
+
+
 })
+
+
 
 
 
