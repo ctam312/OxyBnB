@@ -9,25 +9,23 @@ const { handleValidationErrors } = require("../../utils/validation");
 const router = express.Router();
 
 const validateSignup = [
-	check("email")
+	check("email", "email: Please provide a valid email.")
 		.exists({ checkFalsy: true })
-		.isEmail()
-		.withMessage("Please provide a valid email."),
-	check("username")
+		.bail()
+		.isEmail(),
+	check("username", "username: Please provide a username with at least 4 characters.")
 		.exists({ checkFalsy: true })
-		.isLength({ min: 4 })
-		.withMessage("Please provide a username with at least 4 characters."),
-	check("username").not().isEmail().withMessage("Username cannot be an email."),
-	check("password")
+		.bail()
+		.isLength({ min: 4 }),
+	check("username", "username: Username cannot be an email.").not().bail().isEmail(),
+	check("password", "Password: Password must be 6 characters or more.")
 		.exists({ checkFalsy: true })
-		.isLength({ min: 6 })
-		.withMessage("Password must be 6 characters or more."),
-		check("firstName")
-		.exists({ checkFalsy: true })
-		.withMessage("Must provide first name"),
-		check("lastName")
-		.exists({ checkFalsy: true })
-		.withMessage("Must provide last name"),
+		.bail()
+		.isLength({ min: 6 }),
+		check("firstName", "firstName: First Name is required")
+		.exists({ checkFalsy: true }),
+		check("lastName", "lastName: Last Name is required")
+		.exists({ checkFalsy: true }),
 	handleValidationErrors,
 ];
 
@@ -37,9 +35,70 @@ router.post("/", validateSignup, async (req, res) => {
 	
 	await setTokenCookie(res, user);
 
+	const usernameCheck = await User.findOne({
+		where: {
+			username: username
+		}
+	})
+
+	if (usernameCheck) {
+		res.status(403);
+		res.statusCode = 403;
+		return res.json({
+			message: "Booking MUST belong to current user",
+			StatusCode: res.statusCode,
+		});
+	}
+
+	const emailCheck = await User.findOne({
+		where: {
+			email: email
+		}
+	})
+
+	if (emailCheck) {
+		res.status(403);
+		res.statusCode = 403;
+		return res.json({
+			message: "Booking MUST belong to current user",
+			StatusCode: res.statusCode,
+		});
+	}
+
+	// if (!email || !username || !firstName || !lastName) {
+	// 	res.status(400);
+	// 	res.statusCode = 400;
+	// 	const weirdError = [];
+
+	// 	if (!email) {
+	// 		weirdError.push({ email: "Invalid email" })
+	// 	}
+
+	// 	if (!username) {
+	// 		weirdError.push({ username: "Username is required" })
+	// 	}
+
+	// 	if (!firstName) {
+	// 		weirdError.push({ firstName: "First Name is required" })
+	// 	}
+
+	// 	if (!lastName) {
+	// 		weirdError.push({ lastName: "Last Name is required" })
+	// 	}
+
+	// 	return res.json(weirdError);
+	// }
+
+
+
 
 	return res.json({
-		user: user,
+		id:user.id,
+		firstName:firstName,
+		lastName:lastName,
+		email:email,
+		username:username,
+		token:req.cookies.token
 	});
 });
 
