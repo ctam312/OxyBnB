@@ -31,67 +31,43 @@ const validateSignup = [
 
 router.post("/", validateSignup, async (req, res) => {
 	const { email, password, username, firstName, lastName } = req.body;
-	const user = await User.signup({ email, username, password, firstName, lastName });
 	
-	await setTokenCookie(res, user);
-
 	const usernameCheck = await User.findOne({
 		where: {
 			username: username
 		}
 	})
-
+	
 	if (usernameCheck) {
 		res.status(403);
 		res.statusCode = 403;
 		return res.json({
-			message: "Booking MUST belong to current user",
+			message: "User already exists",
 			StatusCode: res.statusCode,
+			errors: "User with that username already exists"
 		});
 	}
-
+	
 	const emailCheck = await User.findOne({
 		where: {
 			email: email
 		}
 	})
-
+	
 	if (emailCheck) {
 		res.status(403);
 		res.statusCode = 403;
 		return res.json({
-			message: "Booking MUST belong to current user",
+			message: "User already exists",
 			StatusCode: res.statusCode,
+			errors: "User with that email already exists"
 		});
 	}
-
-	// if (!email || !username || !firstName || !lastName) {
-	// 	res.status(400);
-	// 	res.statusCode = 400;
-	// 	const weirdError = [];
-
-	// 	if (!email) {
-	// 		weirdError.push({ email: "Invalid email" })
-	// 	}
-
-	// 	if (!username) {
-	// 		weirdError.push({ username: "Username is required" })
-	// 	}
-
-	// 	if (!firstName) {
-	// 		weirdError.push({ firstName: "First Name is required" })
-	// 	}
-
-	// 	if (!lastName) {
-	// 		weirdError.push({ lastName: "Last Name is required" })
-	// 	}
-
-	// 	return res.json(weirdError);
-	// }
-
-
-
-
+	
+	const user = await User.signup({ email, username, password, firstName, lastName });
+	
+	await setTokenCookie(res, user);
+	
 	return res.json({
 		id:user.id,
 		firstName:firstName,

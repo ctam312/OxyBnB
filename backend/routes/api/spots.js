@@ -321,9 +321,9 @@ router.post("/", requireAuth, validateSpot, async (req, res, next) => {
 	res.status(201);
 	res.statusCode = 201;
 
-	return res.json({
-		spot: spot,
-	});
+	return res.json(
+		spot
+	);
 });
 
 //edit spot by ID (PROBLEM WITH VALIDATESPOT NOT WORKING)
