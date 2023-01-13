@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "express-validator": "^6.14.2"
+    "express-validator": "^6.14.2",
+    "js-cookie": "^3.0.1"
   },
   "name": "authenticate-me",
   "description": "## Database Schema Design",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "install": "npm --prefix backend install backend",
     "dev:backend": "npm install --prefix backend start",
@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/ctam312/API-project/issues"
   },
-  "homepage": "https://github.com/ctam312/API-project#readme"
+  "homepage": "https://github.com/ctam312/API-project#readme",
+  "devDependencies": {
+    "redux-logger": "^3.0.6"
+  }
 }
