@@ -67,10 +67,7 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
-            <OpenModalMenuItem
-              itemText="Demo User"
-              onItemClick={closeMenu}
-              modalComponent={<DemoUser />}
+            <DemoUser
             />
           </>
         )}
