@@ -44,21 +44,34 @@ export const getSpots = () => async (dispatch) => {
     }
 }
 
+export const getSpot = (spotId) => async (dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}`);
+    if (res.ok) {
+        const spot = await res.json();
+        dispatch(loadSpot(spot))
+        return spot;
+    }
+}
 //reducer
 
 const initialState = {
     allSpots: {},
-    spot: {},
+    oneSpot: {},
 }
 
 export default function spotReducer(state = initialState, action){
     switch (action.type) {
         case LOAD_ALL_SPOTS: {
-            const loadSpotsState = {...state};
+            const loadSpotsState = {allSpots: {}, oneSpot:{}};
             action.spots.Spots.forEach(spot => {
-                loadSpotsState[spot.id] = spot;
+                loadSpotsState.allSpots[spot.id] = spot;
             })
             return loadSpotsState;
+        }
+        case LOAD_SPOT: {
+            const loadSpotState = { ...state, oneSpot: {}};
+            loadSpotState.oneSpot = action.spot;
+            return loadSpotState
         }
         default:
             return state;

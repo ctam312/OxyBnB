@@ -5,6 +5,8 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import DemoUser from '../DemoUser'
+import './ProfileButton.css';
+
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
