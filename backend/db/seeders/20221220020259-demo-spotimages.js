@@ -25,7 +25,7 @@ module.exports = {
     {
       spotId: 2,
       url: 'https://coolmaterial.com/wp-content/uploads/2019/12/Niko-Architecture-House-in-the-Landscape-1000x600.jpg',
-      preview: false,
+      preview: true,
     },
     {
       spotId: 3,
@@ -35,7 +35,7 @@ module.exports = {
     {
       spotId: 4,
       url: 'https://i.pinimg.com/736x/80/08/86/800886c220426a3eaf88d94446fc748e--mojave-solar-panels.jpg',
-      preview: false,
+      preview: true,
     },
     {
       spotId: 5,
