@@ -14,43 +14,47 @@ function OneSpot() {
 	console.log(mySpot.ownerId);
 	const owner = useSelector((state) => state.spots.oneSpot.User?.firstName);
 	// console.log(owner)
-	const spotPics = mySpot.SpotImages;
-	const mySpotPic = spotPics?.find((img) => img.preview === true);
+	const spotImgs = mySpot.SpotImages;
+	const mySpotImg = spotImgs?.find((img) => img.preview === true);
 
 	const spotReviews = useSelector((state) => state.Reviews);
 
 	const dispatch = useDispatch();
 	const { spotId } = useParams();
 	const history = useHistory();
-	const [validationErrors] = useState([]);
 
 	useEffect(() => {
 		dispatch(getSpot(spotId)).catch(() => history.push("/"));
 	}, [dispatch, spotId, spotReviews, history]);
 
-    if (!mySpot?.id) return null;
+	if (!mySpot?.id) return null;
 	return (
-        <div>
-			<div>
-				<ul className="errors-list">
-					{validationErrors.map((error) => (
-						<li key={error}>{error} </li>
-					))}
-				</ul>
+		<div>
+			<div className="spot-header">
+				<div className="spot-name-title">
+					<h1>
+						{mySpot.name} - {mySpot.description}
+					</h1>
+				</div>
+				<div className="spot-information-header">
+					<h4>
+						<i class="fa fa-star">{mySpot.avgStarRating} - {mySpot.numReviews} Reviews - Superhost - {mySpot.address}</i>
+					</h4>
+				</div>
 			</div>
 			<div className="main-single-spot-div">
 				<div className="spot-preview-image-div">
 					<img
 						className="preview-image-div"
-						src={mySpotPic?.url}
+						src={mySpotImg?.url}
 						alt="spot-pic-url"
 					></img>
 				</div>
 				<div className="spot-modal-and-details">
-					<div className="property-information">
-						<h1 className="hosted-by-header">Entire unit hosted by {owner} </h1>
+					<div className="spot-information">
+						<h1 className="hosted-by">Entire unit hosted by {owner} </h1>
 
-						<div className="first-details-section">
+						<div className="details-section">
 							<div>
 								<i class="fa fa-calendar-check"> Self check-in</i>
 								<div className="check-in-desc">
@@ -120,7 +124,9 @@ function OneSpot() {
 								</div>
 							) : (
 								<div className="fees-div">
-                                    <div>{`${mySpot.price} x 5 nights          $${Math.floor(mySpot.price*5)}`}</div>
+									<div>{`${mySpot.price} x 5 nights          $${Math.floor(
+										mySpot.price * 5
+									)}`}</div>
 									<div>{`Cleaning fee     $${70}`}</div>
 									<div>{`Service fee      $${114}`}</div>
 								</div>
