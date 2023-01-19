@@ -52,6 +52,22 @@ export const getSpot = (spotId) => async (dispatch) => {
         return spot;
     }
 }
+
+export const editSpot = (updateSpot, updateSpotbyId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${updateSpotbyId.id}`, {
+        method: 'PUT',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(updateSpotbyId)
+    });
+
+    if(res.ok) {
+        const updatedSpot = await res.json();
+        const finalUpdatedSpot = {...updatedSpot, ...updateSpotbyId}
+        dispatch(updateSpot(finalUpdatedSpot))
+    }
+    return res;
+}
+
 //reducer
 
 const initialState = {
@@ -72,6 +88,12 @@ export default function spotReducer(state = initialState, action){
             const loadSpotState = { ...state, oneSpot: {}};
             loadSpotState.oneSpot = action.spot;
             return loadSpotState
+        }
+        case UPDATE_SPOT: {
+            const editSpotState = { ...state, singleSpot: {}};
+            editSpotState.allSpots[action.spot.id] = action.spot
+            editSpotState.singleSpot = action.spot
+            return editSpotState
         }
         default:
             return state;

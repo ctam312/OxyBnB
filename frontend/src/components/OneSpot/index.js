@@ -4,9 +4,9 @@ import { getSpot } from "../../store/spots";
 import { useParams, useHistory } from "react-router-dom";
 import "./OneSpot.css";
 import OpenModalButton from "../OpenModalButton";
+import EditSpot from "../EditSpot";
+import { deleteSpot } from "../../store/spots";
 
-// import EditSpot from '../EditSpotForm/EditSpotForm';
-// import DeleteSpot from '../DeleteSpotForm/delete-spot-form';
 
 function OneSpot() {
 	const user = useSelector((state) => state.session.user);
@@ -111,7 +111,7 @@ function OneSpot() {
 									<btn className="button">
 										{
 											<OpenModalButton
-												// modalComponent={<EditSpot />}
+												modalComponent={<EditSpot />}
 												buttonText="Edit Spot"
 											/>
 										}
