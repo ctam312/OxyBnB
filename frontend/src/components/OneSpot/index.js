@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpot } from "../../store/spots";
 import { useParams, useHistory } from "react-router-dom";
 import "./OneSpot.css";
 import OpenModalButton from "../OpenModalButton";
 import EditSpot from "../EditSpot";
-import { deleteSpot } from "../../store/spots";
-
+import DeleteSpot from "../DeleteSpot";
 
 function OneSpot() {
 	const user = useSelector((state) => state.session.user);
@@ -38,9 +37,9 @@ function OneSpot() {
 				</div>
 				<div className="spot-information-header">
 					<h4>
-						<i class="fa fa-star">
+						<i className="fa fa-star">
 							{mySpot.avgStarRating} - {mySpot.numReviews} Reviews - Superhost -{" "}
-							{mySpot.city},  {mySpot.state},  {mySpot.country}
+							{mySpot.city}, {mySpot.state}, {mySpot.country}
 						</i>
 					</h4>
 				</div>
@@ -59,17 +58,17 @@ function OneSpot() {
 
 						<div className="details-section">
 							<div>
-								<i class="fa fa-calendar-check"> Self check-in</i>
+								<i className="fa fa-calendar-check"> Self check-in</i>
 								<div className="check-in-desc">
 									Check yourself in with the lockbox.
 								</div>
-								<i class="fa fa-wifi" aria-hidden="true">
+								<i className="fa fa-wifi" aria-hidden="true">
 									Wifi Avaliable
 								</i>
 								<div className="amenities-desc">
 									Speedy Wifi is supplied when needed!
 								</div>
-								<i class="fa fa-user-times" aria-hidden="true">
+								<i className="fa fa-user-times" aria-hidden="true">
 									Free cancellations before Oct 3rd.
 								</i>
 								<div className="cancel-desc">
@@ -100,7 +99,7 @@ function OneSpot() {
 							<div className="price-per-night">
 								<h1>{`$${mySpot.price} night`}</h1>
 							</div>
-							<i class="fa fa-star">{mySpot.avgStarRating}</i>
+							<i className="fa fa-star">{mySpot.avgStarRating}</i>
 							<div className="number-of-reviews">
 								<div>{`${mySpot.numReviews} Reviews`}</div>
 							</div>
@@ -108,22 +107,15 @@ function OneSpot() {
 						<div className="edit-delete-modal">
 							{user && user?.id === mySpot?.ownerId ? (
 								<div>
-									<btn className="button">
-										{
 											<OpenModalButton
 												modalComponent={<EditSpot />}
 												buttonText="Edit Spot"
 											/>
-										}
-									</btn>
-									<btn className="button">
-										{
+
 											<OpenModalButton
-												// modalComponent={<DeleteSpot />}
+												modalComponent={<DeleteSpot />}
 												buttonText="Delete Spot"
 											/>
-										}
-									</btn>
 								</div>
 							) : (
 								<div className="fees-div">

@@ -85,11 +85,11 @@ function EditSpot() {
 	};
 
 	return (
-		<>
+		<div className = "form-container">
 			<div className="form-header">
 				<h1>Edit your listing</h1>
 			</div>
-			<section className="form-body-container">
+			<div className="form-body-container">
 				<div className="owner-edit-form">
 					<ul>
 						{errors.map((item, index) => (
@@ -163,8 +163,8 @@ function EditSpot() {
 					</label>
 					<button type="submit">Apply Edits</button>
 				</form>
-			</section>
-		</>
+			</div>
+		</div>
 	);
 }
 

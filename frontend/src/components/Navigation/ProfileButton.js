@@ -6,7 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import DemoUser from '../DemoUser'
 import './ProfileButton.css';
-
+import AddSpotModal from "../CreateSpot";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -53,6 +53,11 @@ function ProfileButton({ user }) {
             <li>{user.username}</li>
             <li>{user.firstName} {user.lastName}</li>
             <li>{user.email}</li>
+            <li>                 <OpenModalMenuItem
+                  itemText="Create a new listing"
+                  onItemClick={closeMenu}
+                  modalComponent={< AddSpotModal/>}
+              /> </li>
             <li>
               <button onClick={logout}>Log Out</button>
             </li>
