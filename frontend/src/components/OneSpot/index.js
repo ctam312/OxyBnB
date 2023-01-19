@@ -11,7 +11,7 @@ import OpenModalButton from "../OpenModalButton";
 function OneSpot() {
 	const user = useSelector((state) => state.session.user);
 	const mySpot = useSelector((state) => state.spots.oneSpot);
-	console.log(mySpot.ownerId);
+	// console.log(mySpot.ownerId);
 	const owner = useSelector((state) => state.spots.oneSpot.User?.firstName);
 	// console.log(owner)
 	const spotImgs = mySpot.SpotImages;
@@ -38,7 +38,10 @@ function OneSpot() {
 				</div>
 				<div className="spot-information-header">
 					<h4>
-						<i class="fa fa-star">{mySpot.avgStarRating} - {mySpot.numReviews} Reviews - Superhost - {mySpot.address}</i>
+						<i class="fa fa-star">
+							{mySpot.avgStarRating} - {mySpot.numReviews} Reviews - Superhost -{" "}
+							{mySpot.city},  {mySpot.state},  {mySpot.country}
+						</i>
 					</h4>
 				</div>
 			</div>
