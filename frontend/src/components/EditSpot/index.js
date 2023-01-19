@@ -72,13 +72,15 @@ function EditSpot() {
 		const { id } = mySpot;
 
 		const spotIdNeed = {
-			id,
+			id
 		};
+		
 
-		await dispatch(editSpot(editedSpot, spotIdNeed))
-			.then(history.push(`/spots/${id}`))
+		dispatch(editSpot(editedSpot, spotIdNeed))
+			.then(() => history.push(`/spots/${id}`))
 			.then(closeModal)
 			.catch(async (res) => {
+				console.log(res)
 				const data = await res.json();
 				if (data && data.errors) setErrors(data.errors);
 			});

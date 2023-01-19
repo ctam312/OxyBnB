@@ -53,11 +53,11 @@ export const getSpot = (spotId) => async (dispatch) => {
 	}
 };
 
-export const editSpot = (updateSpot, updateSpotbyId) => async (dispatch) => {
+export const editSpot = (updateSpotBody, updateSpotbyId) => async (dispatch) => {
 	const res = await csrfFetch(`/api/spots/${updateSpotbyId.id}`, {
 		method: "PUT",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(updateSpotbyId),
+		body: JSON.stringify(updateSpotBody),
 	});
 
 	if (res.ok) {
@@ -72,9 +72,11 @@ export const removeSpot = (spotId) => async (dispatch) => {
 	const res = await csrfFetch(`/api/spots/${spotId}`, {
 		method: "DELETE",
 	});
+    console.log(res)
 	if (res.ok) {
 		dispatch(deleteSpot(spotId));
 	}
+    
 	return res;
 };
 
@@ -136,7 +138,7 @@ export default function spotReducer(state = initialState, action) {
 		case DELETE_SPOT: {
 			const deleteSpotState = { ...state, singleSpot: {} };
 			delete deleteSpotState.allSpots[action.spotId];
-			return;
+			return deleteSpotState;
 		}
 		case ADD_SPOT: {
 			const addSpotState = { ...state, singleSpot: {} };

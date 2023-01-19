@@ -14,12 +14,13 @@ const DeleteSpot = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await dispatch(removeSpot(mySpot.id))
-			.then(history.push(`/`))
-			.then(closeModal)  //PROBLEM RIGHT HERE
-			.catch(async (res) => {
-				const data = await res.json();
-				if (data && data.errors) setErrors(data.errors);
-			});
+		.then(closeModal)  //PROBLEM RIGHT HERE
+		.then(() => history.push(`/`))
+		.catch(async (res) => {
+			// console.log(res)
+			const data = await res.json();
+			if (data && data.errors) setErrors(data.errors);
+		});
 	};
 
 	return (
