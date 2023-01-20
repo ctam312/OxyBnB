@@ -10,15 +10,15 @@ function EditSpot() {
 	const history = useHistory();
 	const { closeModal } = useModal();
 	// console.log(spotId);
-	const mySpot = useSelector((state) => state.spots.oneSpot);
+	const spot = useSelector((state) => state.spots.oneSpot);
 
-	const [name, setName] = useState(mySpot?.name || "");
-	const [address, setAddress] = useState(mySpot?.address || "");
-	const [city, setCity] = useState(mySpot?.city || "");
-	const [state, setState] = useState(mySpot?.state || "");
-	const [country, setCountry] = useState(mySpot?.country || "");
-	const [description, setDescription] = useState(mySpot?.description || "");
-	const [price, setPrice] = useState(mySpot?.price || "");
+	const [name, setName] = useState(spot?.name || "");
+	const [address, setAddress] = useState(spot?.address || "");
+	const [city, setCity] = useState(spot?.city || "");
+	const [state, setState] = useState(spot?.state || "");
+	const [country, setCountry] = useState(spot?.country || "");
+	const [description, setDescription] = useState(spot?.description || "");
+	const [price, setPrice] = useState(spot?.price || "");
 
 	const [errors, setErrors] = useState([]);
 
@@ -69,10 +69,13 @@ function EditSpot() {
 			price,
 		};
 
-		const { id } = mySpot;
+		const { id, numReviews, avgStarRating, SpotImages } = spot;
 
 		const spotIdNeed = {
-			id
+			id,
+			numReviews,
+			avgStarRating,
+			SpotImages
 		};
 		
 
@@ -80,7 +83,7 @@ function EditSpot() {
 			.then(() => history.push(`/spots/${id}`))
 			.then(closeModal)
 			.catch(async (res) => {
-				console.log(res)
+				// console.log(res)
 				const data = await res.json();
 				if (data && data.errors) setErrors(data.errors);
 			});

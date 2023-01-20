@@ -6,6 +6,7 @@ import "./OneSpot.css";
 import OpenModalButton from "../OpenModalButton";
 import EditSpot from "../EditSpot";
 import DeleteSpot from "../DeleteSpot";
+import AllReviews from "../AllReviews";
 
 function OneSpot() {
 	const user = useSelector((state) => state.session.user);
@@ -100,8 +101,11 @@ function OneSpot() {
 								<h1>{`$${mySpot.price} night`}</h1>
 							</div>
 							<i className="fa fa-star">{mySpot.avgStarRating}</i>
-							<div className="number-of-reviews">
-								<div>{`${mySpot.numReviews} Reviews`}</div>
+							<div className="reviews-modal">
+								<OpenModalButton
+								modalComponent={<AllReviews/>}
+								buttonText={`${mySpot.numReviews} Reviews`}
+								/>
 							</div>
 						</div>
 						<div className="edit-delete-modal">

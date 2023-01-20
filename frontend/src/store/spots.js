@@ -132,7 +132,7 @@ export default function spotReducer(state = initialState, action) {
 		case UPDATE_SPOT: {
 			const editSpotState = { ...state, singleSpot: {} };
 			editSpotState.allSpots[action.spot.id] = action.spot;
-			editSpotState.singleSpot = action.spot;
+			editSpotState.oneSpot = action.spot;
 			return editSpotState;
 		}
 		case DELETE_SPOT: {
