@@ -1,0 +1,51 @@
+.full-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .form-container {
+    background-color: rgb(114, 189, 106);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .delete-one {
+    background-color: #ff5f5f;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  
+  .delete-confirm {
+    margin-bottom: 1rem;
+  }
+  
+  .final-delete {
+    background-color: #ff5f5f;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .errors {
+    color: #ff5f5f;
+  }
+  

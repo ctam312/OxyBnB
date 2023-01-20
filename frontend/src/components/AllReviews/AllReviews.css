@@ -1,0 +1,33 @@
+.review-div {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.fa-star {
+    color: #000000;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.review-container {
+    width: 100%;
+    overflow-y: scroll;
+    height: 300px;
+}
+
+.each-review {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-review-div {
+    flex: 1;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
