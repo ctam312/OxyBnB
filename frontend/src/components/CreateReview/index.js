@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { createReview } from "../../store/reviews";
+import { createReview, removeReview } from "../../store/reviews";
 import { useHistory } from "react-router-dom";
 import "./CreateReview.css";
+import { getSpot } from "../../store/spots";
 
 const CreateReview = () => {
 	const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const CreateReview = () => {
 		};
 
 		return dispatch(createReview(createdReview, mySpotId, reviewNeed))
+        .then(() => dispatch(getSpot(mySpotId)))
 			.then(() => history.push(`/spots/${mySpotId}`))
 			.then(closeModal)
 			.catch(async (res) => {

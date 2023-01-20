@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpot } from "../../store/spots";
 import { useParams, useHistory } from "react-router-dom";
-import "./OneSpot.css";
 import OpenModalButton from "../OpenModalButton";
 import EditSpot from "../EditSpot";
 import DeleteSpot from "../DeleteSpot";
 import AllReviews from "../AllReviews";
 import CreateReview from "../CreateReview";
+import "./OneSpot.css";
 
 function OneSpot() {
 	const user = useSelector((state) => state.session.user);

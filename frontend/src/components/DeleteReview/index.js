@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { removeReview } from "../../store/reviews";
+import { getSpot } from "../../store/spots";
 import "./DeleteReview.css"
 
 const DeleteReview = ({ myReview }) => {
@@ -17,6 +18,7 @@ const DeleteReview = ({ myReview }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await dispatch(removeReview(myReview))
+            .then(()=> dispatch(getSpot(mySpot.id)))
 			.then(closeModal)
 			.catch(async (res) => {
 				console.log(res);
