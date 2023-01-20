@@ -27,14 +27,14 @@ function EditSpot() {
 	//         .notEmpty()
 	//         .isLength({ min: 1, max: 50 })
 	//         .withMessage("Name must be less than 50 characters"),
-	//     check("address").notEmpty().withMessage("Street address is required"),
-	//     check("city").notEmpty().withMessage("City is required"),
-	//     check("state").notEmpty().withMessage("State is required"),
-	//     check("country").notEmpty().withMessage("Country is required"),
+	//     check("address").notEmpty().withMessage("Street add"),
+	//     check("city").notEmpty().withMessage(""),
+	//     check("state").notEmpty().withMessage("S"),
+	//     check("country").notEmpty().withMessage("Cou"),
 	//     check("lat").notEmpty().isDecimal().withMessage("Latitude is not valid"),
 	//     check("lng").notEmpty().isDecimal().withMessage("Longitude is not valid"),
-	//     check("description").notEmpty().withMessage("Description is required"),
-	//     check("price").notEmpty().isFloat().withMessage("Price per day is required"),
+	//     check("description").notEmpty().withMessage("Descrip"),
+	//     check("price").notEmpty().isFloat().withMessage("Price per"),
 	//     handleValidationErrors,
 	// ];
 
@@ -42,10 +42,10 @@ function EditSpot() {
 		const errorArr = [];
 		if (name.length <= 0 || name.length >= 50)
 			errorArr.push("Name must be less than 50 characters");
-		if (address.length === 0) errorArr.push("Street address is required");
-		if (city.length === 0) errorArr.push("City is required");
-		if (state.length === 0) errorArr.push("State is required");
-		if (country.length === 0) errorArr.push("Country is required");
+		if (address.length === 0) errorArr.push("You must enter a valid Address.");
+		if (city.length === 0) errorArr.push("You must enter a valid city.");
+		if (state.length === 0) errorArr.push("You must enter a valid state.");
+		if (country.length === 0) errorArr.push("You must enter a valid country.");
 		if (description.length === 0)
 			errorArr.push("You must enter a valid description.");
 		if (price <= 0) errorArr.push("You must enter a valid price.");
@@ -97,8 +97,8 @@ function EditSpot() {
 			<div className="form-body-container">
 				<div className="owner-edit-form">
 					<ul>
-						{errors.map((item, index) => (
-							<li key={index}>{item.name}</li>
+						{errors.map((item, idx) => (
+							<li key={idx}>{item}</li>
 						))}
 					</ul>
 				</div>
@@ -109,7 +109,6 @@ function EditSpot() {
 							type="text"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
-							required
 						/>
 					</label>
 					<label className="form-input">
@@ -118,7 +117,6 @@ function EditSpot() {
 							type="text"
 							value={address}
 							onChange={(e) => setAddress(e.target.value)}
-							required
 						/>
 					</label>
 					<label className="form-input">
@@ -127,7 +125,6 @@ function EditSpot() {
 							type="text"
 							value={city}
 							onChange={(e) => setCity(e.target.value)}
-							required
 						/>
 					</label>
 					<label className="form-input">
@@ -136,7 +133,6 @@ function EditSpot() {
 							type="text"
 							value={state}
 							onChange={(e) => setState(e.target.value)}
-							required
 						/>
 					</label>
 					<label className="form-input">
@@ -145,7 +141,6 @@ function EditSpot() {
 							type="text"
 							value={country}
 							onChange={(e) => setCountry(e.target.value)}
-							required
 						/>
 					</label>
 					<label className="form-input">
@@ -154,7 +149,6 @@ function EditSpot() {
 							type="text"
 							value={description}
 							onChange={(e) => setDescription(e.target.value)}
-							required
 						/>
 					</label>
 					<label className="form-input">
@@ -163,7 +157,6 @@ function EditSpot() {
 							type="number"
 							value={price}
 							onChange={(e) => setPrice(e.target.value)}
-							required
 						/>
 					</label>
 					<button type="submit">Apply Edits</button>
