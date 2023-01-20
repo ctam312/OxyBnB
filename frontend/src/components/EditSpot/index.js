@@ -71,7 +71,7 @@ function EditSpot() {
 
 		const { id, numReviews, avgStarRating, SpotImages } = spot;
 
-		const spotIdNeed = {
+		const spotNeed = {
 			id,
 			numReviews,
 			avgStarRating,
@@ -79,7 +79,7 @@ function EditSpot() {
 		};
 		
 
-		dispatch(editSpot(editedSpot, spotIdNeed))
+		dispatch(editSpot(editedSpot, spotNeed))
 			.then(() => history.push(`/spots/${id}`))
 			.then(closeModal)
 			.catch(async (res) => {

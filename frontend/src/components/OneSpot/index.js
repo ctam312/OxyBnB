@@ -7,10 +7,12 @@ import OpenModalButton from "../OpenModalButton";
 import EditSpot from "../EditSpot";
 import DeleteSpot from "../DeleteSpot";
 import AllReviews from "../AllReviews";
+import CreateReview from "../CreateReview";
 
 function OneSpot() {
 	const user = useSelector((state) => state.session.user);
 	const mySpot = useSelector((state) => state.spots.oneSpot);
+	const numRev = useSelector((state) => state.spots.oneSpot.numReviews)
 	// console.log(mySpot.ownerId);
 	const owner = useSelector((state) => state.spots.oneSpot.User?.firstName);
 	// console.log(owner)
@@ -103,26 +105,29 @@ function OneSpot() {
 							<i className="fa fa-star">{mySpot.avgStarRating}</i>
 							<div className="reviews-modal">
 								<OpenModalButton
-								modalComponent={<AllReviews/>}
-								buttonText={`${mySpot.numReviews} Reviews`}
+									modalComponent={<AllReviews />}
+									buttonText={`${numRev} Reviews`}
 								/>
 							</div>
 						</div>
 						<div className="edit-delete-modal">
 							{user && user?.id === mySpot?.ownerId ? (
 								<div>
-											<OpenModalButton
-												modalComponent={<EditSpot />}
-												buttonText="Edit Spot"
-											/>
-
-											<OpenModalButton
-												modalComponent={<DeleteSpot />}
-												buttonText="Delete Spot"
-											/>
+									<OpenModalButton
+										modalComponent={<EditSpot />}
+										buttonText="Edit Spot"
+									/>
+									<OpenModalButton
+										modalComponent={<DeleteSpot />}
+										buttonText="Delete Spot"
+									/>
 								</div>
 							) : (
 								<div className="fees-div">
+									<OpenModalButton
+										modalComponent={<CreateReview />}
+										buttonText="Create Review"
+									/>
 									<div>{`${mySpot.price} x 5 nights          $${Math.floor(
 										mySpot.price * 5
 									)}`}</div>
