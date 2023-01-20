@@ -12,7 +12,7 @@ const DeleteReview = ({ myReview }) => {
 	const { closeModal } = useModal();
 	const [boolean, setBoolean] = useState(false);
 	const [confirmVisible, setConfirmVisible] = useState(false);
-	const [errorValidations, setErrorValidations] = useState([]);
+
 	const history = useHistory();
 
 	const handleSubmit = async (e) => {
@@ -20,24 +20,12 @@ const DeleteReview = ({ myReview }) => {
 		await dispatch(removeReview(myReview))
             .then(()=> dispatch(getSpot(mySpot.id)))
 			.then(closeModal)
-			.catch(async (res) => {
-				console.log(res);
-				const data = await res.json();
-				if (data && data.errors) setErrorValidations(data.errors);
-			});
 		history.push(`/spots/${mySpot.id}`);
 	};
 
 	return (
 		<div className="full-form-container">
 			<div className="form-container">
-				<div className="errors">
-					<ul>
-						{errorValidations.map((error) => (
-							<li key={error}>{error}</li>
-						))}
-					</ul>
-				</div>
 				<form className="delete-confirmation" onSubmit={handleSubmit}>
 					<button
 						className="delete-one"
