@@ -217,7 +217,7 @@ router.get("/", validateQueries, async (req, res, next) => {
 		//calculate average
 		for (const spotId in spotRatings) {
 			const rating = spotRatings[spotId];
-			spot.avgStars = rating.totalStars / rating.reviewCount;
+			spot.avgStars = Number.parseFloat(rating.totalStars / rating.reviewCount).toFixed(2);
 		}
 
 		//if no ratings avaliable
@@ -448,7 +448,7 @@ router.get("/:spotId", async (req, res, next) => {
 	if (!(sum / count)) {
 		details.avgStarRating = "No avgStarRating due to lack of reviews";
 	} else {
-		details.avgStarRating = sum / count;
+		details.avgStarRating = Number.parseFloat(sum / count).toFixed(2);
 	}
 
 	delete details.Reviews;

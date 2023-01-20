@@ -12,6 +12,7 @@ import CreateReview from "../CreateReview";
 function OneSpot() {
 	const user = useSelector((state) => state.session.user);
 	const mySpot = useSelector((state) => state.spots.oneSpot);
+	console.log(mySpot)
 	const numRev = useSelector((state) => state.spots.oneSpot.numReviews)
 	// console.log(mySpot.ownerId);
 	const owner = useSelector((state) => state.spots.oneSpot.User?.firstName);
