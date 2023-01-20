@@ -2,32 +2,33 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpot } from "../../store/spots";
 import { useParams, useHistory } from "react-router-dom";
-import "./OneSpot.css";
 import OpenModalButton from "../OpenModalButton";
 import EditSpot from "../EditSpot";
 import DeleteSpot from "../DeleteSpot";
 import AllReviews from "../AllReviews";
 import CreateReview from "../CreateReview";
+import "./OneSpot.css";
 
 function OneSpot() {
 	const user = useSelector((state) => state.session.user);
 	const mySpot = useSelector((state) => state.spots.oneSpot);
 	const numRev = useSelector((state) => state.spots.oneSpot.numReviews)
-	// console.log(mySpot.ownerId);
 	const owner = useSelector((state) => state.spots.oneSpot.User?.firstName);
-	// console.log(owner)
 	const spotImgs = mySpot.SpotImages;
 	const mySpotImg = spotImgs?.find((img) => img.preview === true);
-
 	const spotReviews = useSelector((state) => state.Reviews);
-
+	// console.log(mySpot)
+	// console.log(mySpot.ownerId);
+	// console.log(owner)
 	const dispatch = useDispatch();
 	const { spotId } = useParams();
 	const history = useHistory();
-
+	
 	useEffect(() => {
 		dispatch(getSpot(spotId)).catch(() => history.push("/"));
 	}, [dispatch, spotId, spotReviews, history]);
+	
+
 
 	if (!mySpot?.id) return null;
 	return (
