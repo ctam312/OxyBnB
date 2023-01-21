@@ -8,7 +8,7 @@ function AllReviews() {
 	const dispatch = useDispatch();
 
 	const spotId = useSelector((state) => state.spots.oneSpot.id);
-	const user = useSelector((state) => state.session.user.id);
+	const user = useSelector((state) => state.session.user && state.session.user.id)
 
 	const getAvg = useSelector((state) => state.spots.oneSpot.avgStarRating);
 	const numRev = useSelector((state) => state.spots.oneSpot.numReviews);
