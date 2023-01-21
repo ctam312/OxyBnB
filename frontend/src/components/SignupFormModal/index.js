@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import { restoreUser } from "../../store/session";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
@@ -14,16 +15,19 @@ function SignupFormModal() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
+  const currUser = useSelector((state)=> state.session.user)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ email, username, firstName, lastName, password }))
+      .then(() => dispatch(restoreUser(currUser)))
         .then(closeModal)
         .catch(async (res) => {
           const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
+          // console.log(data)
+          if (data && data.errors) setErrors([data.errors]);
         });
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
