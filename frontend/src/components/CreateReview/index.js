@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { createReview, removeReview } from "../../store/reviews";
+import { createReview } from "../../store/reviews";
 import { useHistory } from "react-router-dom";
 import "./CreateReview.css";
 import { getSpot } from "../../store/spots";
