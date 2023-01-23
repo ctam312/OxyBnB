@@ -57,7 +57,15 @@
 }
 
 .edit-delete-btn button{
-    margin: 10px;
+    margin-right: 5px;
     border-radius: 10px;
     background-color: rgb(251, 149, 149);
+    font-size: 15px;
 }
+
+.create-review-button button{
+    border-radius: 10px;
+    background-color: rgb(251, 149, 149);
+    font-size: 15px;
+}
+
