@@ -42,8 +42,7 @@ function AllSpots() {
 										</div>
 									</div>
 									<p className="distance">{52 - spot.id} miles away</p>
-									{/* placeholder for distance away */}
-									<div className="price-per-night">${spot.price} night</div>
+									<p className="card-price">${spot.price} night</p>
 								</div>
 							</div>
 						</div>

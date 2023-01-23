@@ -37,7 +37,7 @@ function OneSpot() {
 				</div>
 				<div className="spot-information-header">
 					<h3>
-						<i className="fa fa-star" />
+						<i className="fa fa-star" /> {" "}
 						{mySpot.avgStarRating} · {mySpot.numReviews} reviews · {" "}
 						{mySpot.city}, {mySpot.state}, {mySpot.country}
 					</h3>
