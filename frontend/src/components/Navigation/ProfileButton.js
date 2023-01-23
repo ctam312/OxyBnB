@@ -57,15 +57,18 @@ function ProfileButton({ user }) {
 					<>
 						<li>{user.username}</li>
 						<li>{user.email}</li>
-						<button>
+						<li>{user.firstName} {user.lastName}</li>
+						<li className ="li-button">
+						<button classname = "create-btn">
 							<OpenModalMenuItem
 								itemText="Create a new listing"
 								onItemClick={closeMenu}
 								modalComponent={<AddSpotModal/>}
 							/>
 						</button>
-						<li>
-							<button onClick={logout}>Log Out</button>
+						</li>
+						<li className ="li-button">
+							<button className = "logout-btn" onClick={logout}>Log Out</button>
 						</li>
 					</>
 				) : (

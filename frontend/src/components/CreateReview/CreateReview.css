@@ -1,70 +1,71 @@
-.entire-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    width: 100%
-}
-
-.leave-review-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f2f2f2;
+.create-review-container {
+    width: 80vw;
+    max-width: 400px; /* optional, to prevent the form from becoming too large */
+    height: 80vh;
+    max-height: 600px; /* optional, to prevent the form from becoming too large */
+    margin: 0 auto;
     padding: 20px;
+    background-color: #f3f3f3;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #ccc;
-}
+    overflow-y: auto;
+  }
+  
+  .close-modal{
+    text-align: right;
+  }
 
-.header {
+  .create-review-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .edit-spot-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .error-container {
     margin-bottom: 20px;
-}
-
-.header h1 {
-    font-size: 2rem;
-}
-
-.form-div {
+  }
+  
+  .error-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: red;
+  }
+  
+  .review-form {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .review-form-parts {
+    width: 100%;
     margin-bottom: 20px;
-}
-
-.review-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.text-review {
+  }
+  
+  .create-review-label {
+    font-size: 1.2rem;
     margin-bottom: 10px;
-}
-
-.text-review input {
-    width: 80%;
+    display: block;
+  }
+  
+  .create-review-input {
+    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-}
-
-.star-review {
-    margin-bottom: 10px;
-}
-
-.star-review select {
-    width: 80%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-}
-
-.submit-btn {
-    width: 80%;
+  }
+  
+  .create-review-input:focus {
+    border: 2px solid #555;
+  }
+  
+  .review-form button {
+    width: 100%;
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -72,21 +73,8 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-.submit-btn:hover {
+  }
+  
+  .review-form button:hover {
     background-color: #45a049;
-}
-
-.error-container {
-    width: 80%;
-    margin-bottom: 10px;
-}
-
-.errors-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    color: red;
-}
-
+    }

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { editSpot } from "../../store/spots";
+import { getSpot } from "../../store/spots";
 import "./EditSpot.css";
 
 function EditSpot() {
@@ -63,6 +64,7 @@ function EditSpot() {
 		};
 
 		dispatch(editSpot(editedSpot, spotNeed))
+		.then(() => dispatch(getSpot(spot.id)))
 			.then(() => history.push(`/spots/${id}`))
 			.then(closeModal)
 			.catch(async (res) => {

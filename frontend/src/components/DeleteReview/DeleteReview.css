@@ -1,6 +1,8 @@
 .full-form-container {
     display: flex;
     justify-content: right;
+    margin-right: 10px;
+    margin-top: 15px
   }
   
   .delete-confirmation {
@@ -8,8 +10,6 @@
     flex-direction: row;
     align-items: center;
   }
-  
-
   
   .delete-one {
     background-color: #ff5f5f;

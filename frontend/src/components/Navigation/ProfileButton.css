@@ -26,6 +26,7 @@ button.hamburger:hover{
 .hamburger{
 display: flex;
 }
+
 .profile-dropdown {
   position: absolute;
   top: 50px;
@@ -64,4 +65,21 @@ display: flex;
 .profile-dropdown button {
   text-align: left; 
   font-size: 15px; 
+}
+
+.logout-btn{
+  width: 100%;
+  padding-left: 58px;
+  border: none;
+background: none;
+}
+
+.create-btn{
+  width: 100%;
+  border: none;
+background: none;
+}
+
+.li-button{
+  text-align:center
 }

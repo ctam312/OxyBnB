@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { removeReview } from "../../store/reviews";
 import { getSpotReviews } from "../../store/reviews";
+import { getSpot } from "../../store/spots";
 import "./DeleteReview.css";
 
 
@@ -19,6 +20,7 @@ const DeleteReview = ({ myReview }) => {
 	  e.preventDefault();
 	  dispatch(removeReview(myReview))
 			  .then(()=> dispatch(getSpotReviews(mySpot.id)))
+			  .then(()=> dispatch(getSpot(mySpot.id)))
 			  .then(() => history.push(`/spots/${mySpot.id}`))
 			  .then(closeModal)
 	};
