@@ -1,0 +1,61 @@
+.review-title{
+    border-top: solid rgba(0, 0, 0, 0.23) 1px;
+}
+
+.main-items{
+    color: black;
+    font-size: large;
+}
+
+.desc{
+    color: grey;
+    margin-left: 20px;
+}
+
+.spot-description{
+    border-top: solid rgba(0, 0, 0, 0.23) 1px;
+}
+
+.details-section{
+    border-top: solid rgba(0, 0, 0, 0.23) 1px;
+    margin: 18px;
+}
+
+.cover-desc{
+    padding-left: 8px
+}
+
+.oxy-cover-div{
+    border-top: solid rgba(0, 0, 0, 0.23) 1px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 5px
+}
+
+.cover-logo{
+    width: 168px;
+}
+
+.full-container{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+}
+
+.spot-preview-image-div{
+    display: flex;
+    justify-content: center;
+}
+
+.preview-image-div{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.price-per-night{
+    margin-left: 16px
+}
+
+.edit-delete-modal{
+
+}

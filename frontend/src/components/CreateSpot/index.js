@@ -45,60 +45,66 @@ function AddSpotModal() {
 	};
 
 	return (
-		<div className="add-spot-div">
-			<div className="header">
-				<h2>Create a spot</h2>
+		<div className="add-spot-container">
+			
+			<div className="close-modal">
+				<button onClick={closeModal}>
+					<i className = "fa-solid fa-xmark" />
+				</button>
 			</div>
 
-			<div>
-				<ul className="errors">
-					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
-					))}
-				</ul>
+			<div className="add-spot-header">
+				<h1>Create a spot</h1>
 			</div>
 
-			<form className="form" onSubmit={handleSubmit}>
-				<div className="form-parts">
-					<label>
+
+
+			<form className="add-spot-form" onSubmit={handleSubmit}>
+				<div className="add-spot-form-parts">
+					<label className="add-spot-form-label">
 						Name: 
 						<input
+						className = "add-spot-form-input"
 							type="text"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
 						/>
 					</label>
 
-					<label>
+					<label className="add-spot-form-label" >
 						Address: 
 						<input
+						className = "add-spot-form-input"
 							type="text"
 							value={address}
 							onChange={(e) => setAddress(e.target.value)}
 						/>
 					</label>
 
-					<label>
+					<label className="add-spot-form-label">
 						City: 
 						<input
+						className = "add-spot-form-input"
 							type="text"
 							value={city}
 							onChange={(e) => setCity(e.target.value)}
 						/>
-					</label>
+					</label >
 
-					<label>
+					<label className="add-spot-form-label">
 						State: 
 						<input
+						className = "add-spot-form-input"
 							type="text"
 							value={state}
 							onChange={(e) => setState(e.target.value)}
 						/>
 					</label>
 
-					<label>
+					<label className="add-spot-form-label">
 						Country: 
 						<input
+						className = "add-spot-form-input"
 							type="text"
 							value={country}
 							onChange={(e) => setCountry(e.target.value)}
@@ -106,33 +112,43 @@ function AddSpotModal() {
 					</label>
 
 
-					<label>
+					<label className="add-spot-form-label">
 						Description: 
 						<input
+						className = "add-spot-form-input"
 							type="text"
 							value={description}
 							onChange={(e) => setDescription(e.target.value)}
 						/>
 					</label>
 
-					<label>
+					<label className="add-spot-form-label">
 						Price: 
 						<input
+						className = "add-spot-form-input"
 							type="number"
 							value={price}
 							onChange={(e) => setPrice(e.target.value)}
 						/>
 					</label>
 
-					<label>
+					<label className="add-spot-form-label">
 						Image URL: 
 						<input
+						className = "add-spot-form-input"
 							type="url"
 							value={url}
 							onChange={(e) => setUrl(e.target.value)}
 						/>
 					</label>
 
+			<div className="add-spot-errors">
+				<ul className="errors">
+					{errors.map((error, idx) => (
+						<li key={idx}>{error}</li>
+					))}
+				</ul>
+			</div>
                     <div className = "submitBtn">
 					<button type="submit">
 						Create Spot

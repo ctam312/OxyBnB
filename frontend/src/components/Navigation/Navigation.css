@@ -2,9 +2,19 @@
     display:none;
 }
 
+.prof{
+  display: flex;
+  justify-content: space-between;
+}
 /* Navigation */
+.logo{
+  width: 120px;
+  margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px
+}
 
-ul {
+.main-burger {
     display: flex;
     justify-content: space-between;
     list-style: none;
@@ -12,16 +22,14 @@ ul {
     padding: 0;
   }
   
-  li {
+  .burger {
     display: inline-block;
   }
-  
-
 
   button {
     background-color: transparent;
-    border: none;
     cursor: pointer;
+    border-radius: 4px;
     font-size: 1.5rem;
   }
   

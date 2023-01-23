@@ -8,10 +8,10 @@ function AllReviews() {
 	const dispatch = useDispatch();
 
 	const spotId = useSelector((state) => state.spots.oneSpot.id);
-	const user = useSelector((state) => state.session.user && state.session.user.id)
+	const user = useSelector(
+		(state) => state.session.user && state.session.user.id
+	);
 
-	const getAvg = useSelector((state) => state.spots.oneSpot.avgStarRating);
-	const numRev = useSelector((state) => state.spots.oneSpot.numReviews);
 	const spotReviews = useSelector((state) => state.reviews.spot);
 	const spotReviewsArr = Object.values(spotReviews);
 
@@ -20,23 +20,19 @@ function AllReviews() {
 	}, [dispatch, spotId]);
 
 	return (
-		<div className="review-div">
-			<i className="fa fa-star">
-				{" "}
-				{getAvg} • {numRev} Reviews
-			</i>
-			<div className="review-container">
-				{spotReviewsArr.map(({ id, review, User }) => (
-					<div key={id} className="each-review">
-						<p className="user-review-div">
-							{review} • {User.firstName} {User.lastName}{" "}
-						</p>
-                        <div>
-						{User.id === user ? <DeleteReview myReview={id} /> : null}
-                        </div>
-					</div>
-				))}
-			</div>
+		<div className="review-container">
+			{spotReviewsArr.map(({ id, review, User }) => (
+				<div key={id} className="each-review">
+					<p className= "user-name" >
+					<i className="fa-solid fa-user"/> {" "}
+					{User.firstName} {User.lastName}
+					</p>
+					<p className="user-review">
+						{review}
+					</p>
+					<div className="rev-delete">{User.id === user ? <DeleteReview myReview={id} /> : null}</div>
+				</div>
+			))}
 		</div>
 	);
 }

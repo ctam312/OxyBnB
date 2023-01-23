@@ -23,7 +23,7 @@ function AllSpots() {
 					{allSpotsArr.map((spot) => (
 						<div
 							to={`/spots/${spot.id}`}
-							className="col-md-4"
+							className="spot-details"
 							key={spot.id}
                             onClick={() => history.push(`/spots/${spot.id}`)}
 						>
@@ -41,7 +41,7 @@ function AllSpots() {
 											{spot.avgStars}
 										</div>
 									</div>
-									<p>{52 - spot.id} miles away</p>
+									<p className="distance">{52 - spot.id} miles away</p>
 									{/* placeholder for distance away */}
 									<div className="price-per-night">${spot.price} night</div>
 								</div>

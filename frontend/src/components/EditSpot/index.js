@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { editSpot } from "../../store/spots";
+import { getSpot } from "../../store/spots";
 import "./EditSpot.css";
 
 function EditSpot() {
@@ -21,22 +22,6 @@ function EditSpot() {
 	const [price, setPrice] = useState(spot?.price || "");
 
 	const [errors, setErrors] = useState([]);
-
-	// const validateSpot = [
-	//     check("name")
-	//         .notEmpty()
-	//         .isLength({ min: 1, max: 50 })
-	//         .withMessage("Name must be less than 50 characters"),
-	//     check("address").notEmpty().withMessage("Street add"),
-	//     check("city").notEmpty().withMessage(""),
-	//     check("state").notEmpty().withMessage("S"),
-	//     check("country").notEmpty().withMessage("Cou"),
-	//     check("lat").notEmpty().isDecimal().withMessage("Latitude is not valid"),
-	//     check("lng").notEmpty().isDecimal().withMessage("Longitude is not valid"),
-	//     check("description").notEmpty().withMessage("Descrip"),
-	//     check("price").notEmpty().isFloat().withMessage("Price per"),
-	//     handleValidationErrors,
-	// ];
 
 	useEffect(() => {
 		const errorArr = [];
@@ -75,11 +60,11 @@ function EditSpot() {
 			id,
 			numReviews,
 			avgStarRating,
-			SpotImages
+			SpotImages,
 		};
-		
 
 		dispatch(editSpot(editedSpot, spotNeed))
+		.then(() => dispatch(getSpot(spot.id)))
 			.then(() => history.push(`/spots/${id}`))
 			.then(closeModal)
 			.catch(async (res) => {
@@ -90,78 +75,92 @@ function EditSpot() {
 	};
 
 	return (
-		<div className = "form-container">
-			<div className="form-header">
+		<div className="edit-spot-container">
+			<div className="close-modal">
+				<button onClick={closeModal}>
+					<i className="fa-solid fa-xmark" />
+				</button>
+			</div>
+
+			<div className="edit-spot-header">
 				<h1>Edit your listing</h1>
 			</div>
-			<div className="form-body-container">
-				<div className="owner-edit-form">
-					<ul>
-						{errors.map((item, idx) => (
-							<li key={idx}>{item}</li>
-						))}
-					</ul>
-				</div>
-				<form className="form-body" onSubmit={handleSubmit}>
-					<label className="form-input">
+
+			<form className="edit-spot-form" onSubmit={handleSubmit}>
+				<div className="edit-spot-form-parts">
+					<div className="edit-spot-errors">
+						<ul>
+							{errors.map((item, idx) => (
+								<li key={idx}>{item}</li>
+							))}
+						</ul>
+					</div>
+					<label className="edit-spot-form-label">
 						Name:
 						<input
+						className="edit-spot-form-input"
 							type="text"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
 						/>
 					</label>
-					<label className="form-input">
+					<label className="edit-spot-form-label">
 						Address:
 						<input
+						className="edit-spot-form-input"
 							type="text"
 							value={address}
 							onChange={(e) => setAddress(e.target.value)}
 						/>
 					</label>
-					<label className="form-input">
+					<label className="edit-spot-form-label">
 						City:
 						<input
+						className="edit-spot-form-input"
 							type="text"
 							value={city}
 							onChange={(e) => setCity(e.target.value)}
 						/>
 					</label>
-					<label className="form-input">
+					<label className="edit-spot-form-label">
 						State:
 						<input
+						className="edit-spot-form-input"
 							type="text"
 							value={state}
 							onChange={(e) => setState(e.target.value)}
 						/>
 					</label>
-					<label className="form-input">
+					<label className="edit-spot-form-label">
 						Country:
 						<input
+						className="edit-spot-form-input"
 							type="text"
 							value={country}
 							onChange={(e) => setCountry(e.target.value)}
 						/>
 					</label>
-					<label className="form-input">
+					<label className="edit-spot-form-label">
 						Description:
 						<input
+						className="edit-spot-form-input"
 							type="text"
 							value={description}
 							onChange={(e) => setDescription(e.target.value)}
 						/>
 					</label>
-					<label className="form-input">
+					<label className="edit-spot-form-label">
 						Price:
 						<input
+						className="edit-spot-form-input"
 							type="number"
 							value={price}
 							onChange={(e) => setPrice(e.target.value)}
 						/>
 					</label>
-					<button type="submit">Apply Edits</button>
-				</form>
-			</div>
+					<button className ="submitBtn" type="submit">Apply Edits</button>
+				</div>
+			</form>
 		</div>
 	);
 }

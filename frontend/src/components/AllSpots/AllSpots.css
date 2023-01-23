@@ -1,48 +1,85 @@
 .spots-div-wrapper {
-	margin: 20px;
-}
-
-.card-img-top {
-	width: 250px;
-	height: 250px;
-	object-fit: cover;
-	border-radius: 20px;
+	padding: 50px 0;
+  }
+  
+  .container {
+	max-width: 1200px;
 	margin: 0 auto;
-}
-
-.card {
-	width: 100%;
-	transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-	border-radius: 20px;
-}
-
-
-
-.col-md-4 {
-	margin: 13px;
-}
-
-.card-body {
-	padding: 5px;
-}
-
-
-.rating {
-	font-size: 14px;
-	color: gray;
-}
-
-.container {
-	width: 100%;
-	margin: 0 auto;
-}
-.row {
+  }
+  
+  .row {
 	display: flex;
 	flex-wrap: wrap;
-}
-
-.price-per-night {
-    font-size: 18px;
-    color: black;
-    margin-top: 10px;
-}
+	justify-content: space-between;
+  }
+  
+  .spot-details {
+	width: calc(25% - 20px);
+	margin-bottom: 40px;
+  }
+  
+  @media (max-width: 992px) {
+	.spot-details {
+	  width: calc(33.33% - 20px);
+	}
+  }
+  
+  @media (max-width: 768px) {
+	.spot-details {
+	  width: calc(50% - 20px);
+	}
+  }
+  
+  .card {
+	border-radius: 8px;
+	overflow: hidden;
+	cursor: pointer;
+  }
+  
+  .card img {
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+	border-radius: 10px;
+  }
+  
+  .card-body {
+	padding: 20px;
+  }
+  
+  .card-body-ST {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  }
+  
+  .card-title {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 600;
+  }
+  
+  .rating {
+	display: flex;
+	align-items: center;
+  }
+  
+  .rating i {
+	color: black;
+	font-size: 14px;
+	margin-right: 5px;
+  }
+  
+  .distance {
+	margin-top: 10px;
+	font-size: 14px;
+	color: #999;
+  }
+  
+  .price-per-night {
+	margin-top: 10px;
+	font-size: 16px;
+	font-weight: 600;
+	color: black;
+  }
+  

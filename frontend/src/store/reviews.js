@@ -57,9 +57,11 @@ export const removeReview = (reviewId) => async (dispatch) => {
 		method: "DELETE",
 	});
 	if (res.ok) {
-		dispatch(deleteReview(reviewId));
-	}
 
+		const newVari = await res.json()
+ 		dispatch(deleteReview(reviewId));
+		return newVari
+	}
 	return res;
 };
 

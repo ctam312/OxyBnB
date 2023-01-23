@@ -3,55 +3,52 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { removeReview } from "../../store/reviews";
+import { getSpotReviews } from "../../store/reviews";
 import { getSpot } from "../../store/spots";
-import "./DeleteReview.css"
+import "./DeleteReview.css";
+
 
 const DeleteReview = ({ myReview }) => {
-	const mySpot = useSelector((state) => state.spots.oneSpot);
 	const dispatch = useDispatch();
+	const [showDelete, setShowDelete] = useState(false);
 	const { closeModal } = useModal();
-	const [boolean, setBoolean] = useState(false);
-	const [confirmVisible, setConfirmVisible] = useState(false);
-
+	const mySpot = useSelector((state) => state.spots.oneSpot);
 	const history = useHistory();
-
+  
+  
 	const handleSubmit = async (e) => {
-		e.preventDefault();
-		await dispatch(removeReview(myReview))
-            .then(()=> dispatch(getSpot(mySpot.id)))
-			.then(closeModal)
-		history.push(`/spots/${mySpot.id}`);
+	  e.preventDefault();
+	  dispatch(removeReview(myReview))
+			  .then(()=> dispatch(getSpotReviews(mySpot.id)))
+			  .then(()=> dispatch(getSpot(mySpot.id)))
+			  .then(() => history.push(`/spots/${mySpot.id}`))
+			  .then(closeModal)
 	};
-
+  
 	return (
-		<div className="full-form-container">
-			<div className="form-container">
-				<form className="delete-confirmation" onSubmit={handleSubmit}>
-					<button
-						className="delete-one"
-						type="button"
-						onClick={() => setConfirmVisible(true)}
-					>
-						Delete Review
-					</button>
-					{confirmVisible && (
-						<div>
-							<input
-								type="checkbox"
-								className="delete-confirm"
-								required
-								checked={boolean}
-								onChange={() => setBoolean(!boolean)}
-							/>
-							<h3>Click Box to Confirm</h3>
-							<button className="final-delete" type="submit" hidden={!boolean}>
-								Confirm
-							</button>
-						</div>
-					)}
-				</form>
-			</div>
+	  <div className="full-form-container">
+		<div className="form-container">
+		  <form className="delete-confirmation" onSubmit={handleSubmit}>
+			{!showDelete && (
+			  <button
+				className="delete-one"
+				type="button"
+				onClick={() => setShowDelete(!showDelete)}
+			  >
+				Delete Review
+			  </button>
+			)}
+			{showDelete && (
+			  <button
+				className="final-delete"
+				type="submit"
+			  >
+				Confirm
+			  </button>
+			)}
+		  </form>
 		</div>
+	  </div>
 	);
-};
-export default DeleteReview;
+  };
+  export default DeleteReview;

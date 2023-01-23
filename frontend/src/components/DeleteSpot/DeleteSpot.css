@@ -1,0 +1,18 @@
+.delete-button {
+    background-color: rgb(255, 86, 86);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    height: 100px;
+    font-size: 16px;
+}
+
+.close-modal-delete{
+    display: flex;
+    justify-content: right;
+}
+
+.delete-modal{
+    background-color: transparent;
+}

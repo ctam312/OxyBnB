@@ -47,6 +47,7 @@ export const getSpots = () => async (dispatch) => {
 export const getSpot = (spotId) => async (dispatch) => {
 	const res = await fetch(`/api/spots/${spotId}`);
 	if (res.ok) {
+		console.log(res.body)
 		const spot = await res.json();
 		dispatch(loadSpot(spot));
 		return spot;
