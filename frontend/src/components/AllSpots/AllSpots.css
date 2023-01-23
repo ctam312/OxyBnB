@@ -44,6 +44,8 @@
   }
   
   .card-body {
+	display: flex;
+	flex-direction: column;
 	padding: 20px;
   }
   
@@ -76,10 +78,6 @@
 	color: #999;
   }
   
-  .price-per-night {
-	margin-top: 10px;
-	font-size: 16px;
-	font-weight: 600;
-	color: black;
+  .card-price{
+	font-size: 100%;
   }
-  
