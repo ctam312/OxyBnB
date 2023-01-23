@@ -1,4 +1,5 @@
 # About OxyBnB:
+![BNB](https://user-images.githubusercontent.com/90665180/213995403-b2a30181-d863-4360-95e9-954fc0181a0a.png)
 
 Welcome to my AirBnB clone, OxyBnB, a vacation rental platform that allows users to list and book properties all over the world. Our site features a user-friendly interface using CRUD operations for browsing, creating reviews, as well as creating your own spot for hosting. Whether you're a traveler looking for a unique place to stay or a homeowner looking to rent out your property, our OxyBnB makes it easy to connect with the perfect match. [Click here to view OxyBnB Live Site](https://oxy-bnb.onrender.com)
 
