@@ -25,9 +25,9 @@ function DemoUser() {
   };
 
   return (
-    <>
-        <button className= "butt" type="submit" onClick={handleSubmit}>Demo User</button>
-    </>
+    <div className="demo-button">
+        <button className= "butt" type="submit" onClick={handleSubmit}>Login as Demo User</button>
+    </div>
   );
 }
 

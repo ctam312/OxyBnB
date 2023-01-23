@@ -1,1 +1,12 @@
 /* TODO Add site wide styles */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+	font-family: "Open Sans", sans-serif;
+}
+
+.clickable,
+button {
+	cursor: pointer;
+}

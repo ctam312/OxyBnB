@@ -22,22 +22,6 @@ function EditSpot() {
 
 	const [errors, setErrors] = useState([]);
 
-	// const validateSpot = [
-	//     check("name")
-	//         .notEmpty()
-	//         .isLength({ min: 1, max: 50 })
-	//         .withMessage("Name must be less than 50 characters"),
-	//     check("address").notEmpty().withMessage("Street add"),
-	//     check("city").notEmpty().withMessage(""),
-	//     check("state").notEmpty().withMessage("S"),
-	//     check("country").notEmpty().withMessage("Cou"),
-	//     check("lat").notEmpty().isDecimal().withMessage("Latitude is not valid"),
-	//     check("lng").notEmpty().isDecimal().withMessage("Longitude is not valid"),
-	//     check("description").notEmpty().withMessage("Descrip"),
-	//     check("price").notEmpty().isFloat().withMessage("Price per"),
-	//     handleValidationErrors,
-	// ];
-
 	useEffect(() => {
 		const errorArr = [];
 		if (name.length <= 0 || name.length >= 50)
@@ -90,19 +74,19 @@ function EditSpot() {
 	};
 
 	return (
-		<div className = "form-container">
-			<div className="form-header">
+		<div className = "edit-spot-container">
+			<div className="edit-spot-header">
 				<h1>Edit your listing</h1>
 			</div>
-			<div className="form-body-container">
-				<div className="owner-edit-form">
+			<div className="edit-spot-form-container">
+				<div className="edit-spot-errors-container">
 					<ul>
 						{errors.map((item, idx) => (
 							<li key={idx}>{item}</li>
 						))}
 					</ul>
 				</div>
-				<form className="form-body" onSubmit={handleSubmit}>
+				<form className="edit-spot-form" onSubmit={handleSubmit}>
 					<label className="form-input">
 						Name:
 						<input
