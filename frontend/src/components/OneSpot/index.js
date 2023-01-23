@@ -60,8 +60,9 @@ function OneSpot() {
 
 							<div className="edit-delete-modal">
 								{user && user?.id === mySpot?.ownerId ? (
-									<div>
+									<div className = "edit-delete-btn">
 										<OpenModalButton
+										className = "edit-spot"
 											modalComponent={<EditSpot />}
 											buttonText="Edit Spot"
 										/>
@@ -83,7 +84,7 @@ function OneSpot() {
 						</div>
 
 						<div className="price-per-night">
-							<h1>{`$${mySpot.price} night`}</h1>
+							<h2>{`$${mySpot.price} night`}</h2>
 						</div>
 
 						<div className="details-section">
