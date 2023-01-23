@@ -1,53 +1,80 @@
-/* AddSpotModal Form Container */
-.add-spot-div {
-    width: 50%;
+.add-spot-container {
+    width: 80vw;
+    max-width: 400px; /* optional, to prevent the form from becoming too large */
+    height: 80vh;
+    max-height: 600px; /* optional, to prevent the form from becoming too large */
     margin: 0 auto;
     padding: 20px;
-    background-color: #c7c1c1;
+    background-color: #f3f3f3;
     border-radius: 10px;
-}
+    overflow-y: auto;
+  }
+  
+  .close-modal{
+    text-align: right;
+  }
 
-.header {
+  .add-spot-header {
     text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .add-spot-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .add-spot-errors {
     margin-bottom: 20px;
-}
-
-.errors {
-    list-style-type: none;
+  }
+  
+  .add-spot-errors ul {
+    list-style: none;
     padding: 0;
     margin: 0;
     color: red;
-}
-
-.form {
+  }
+  
+  .add-spot-form {
     display: flex;
     flex-wrap: wrap;
-}
-
-.form-parts {
+  }
+  
+  .add-spot-form-parts {
     width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .add-spot-form-label {
+    font-size: 1.2rem;
     margin-bottom: 10px;
-}
-
-label {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-input{
+    display: block;
+  }
+  
+  .add-spot-form-input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-spot-form-input:focus {
+    border: 2px solid #555;
+  }
+  
+  .add-spot-form button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
     border: none;
     border-radius: 4px;
-    background-color: #ffffff;
-}
-
-.submitBtn {
-    width: fit-content;
-    margin: 10px auto;
-    padding: 12px 20px;
-}
-
+    cursor: pointer;
+  }
+  
+  .add-spot-form button:hover {
+    background-color: #45a049;
+    }
