@@ -10,7 +10,7 @@
 	flex: 1;
 	flex-shrink: 1;
 	/* max-width: 900px; */
-    height: 5vh;
+    height: 50px;
 	width: 900vw;
 	padding: 14px;
 	border: 1px solid black;
@@ -41,7 +41,7 @@
 }
 
 .search-icon {
-    height: 5vh;
+    height: 50px;
 	background-color: white;
 	border-top: 1px solid rgb(22, 22, 22);
 	border-right: 1px solid black;
