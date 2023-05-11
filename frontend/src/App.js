@@ -5,6 +5,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllSpots from "./components/AllSpots";
 import OneSpot from "./components/OneSpot";
+import SearchPage from "./components/SearchPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path='/spots/:spotId'>
               <OneSpot />
+          </Route>
+          <Route path='/search/:q'>
+            <SearchPage />
           </Route>
         </Switch>
       )}
